@@ -189,9 +189,112 @@ namespace HW_modul_02_Bukov
             }
         }
 
+
+        public static void Task3()
+        {
+            /*Создайте приложение, которое производит операции над матрицами:
+            ■ Умножение матрицы на число;
+            ■ Сложение матриц;
+            ■ Произведение матриц.*/
+
+            int[,] matrix1Task3 = new int[5, 5];
+            int[,] matrix2Task3 = new int[5, 5];
+            int[,] sumMatrix = new int[5, 5];
+            int[,] multiplicationMatrix = new int[5, 5];
+            int scalar = 5;
+            Random random = new Random();
+
+            // Заполнение матрицы случайными числами
+            void fillingMatrix(ref int[,] matrix, Random rnd)
+            {
+                for (int i = 0; i < matrix.GetLength(0); i++)
+                {
+                    for (int j = 0; j < matrix.GetLength(1); j++)
+                    {
+                        matrix[i, j] = random.Next(1, 10); 
+                    }
+                }
+            }
+
+
+            // Вывод матрицы
+            void printMatrix(int[,] matrix)
+            { 
+                for (int i = 0; i < matrix.GetLength(0); i++)
+                {
+                    for (int j = 0; j < matrix.GetLength(1); j++)
+                    {
+                        Console.Write(matrix[i, j] + " ");
+                    }
+                    Console.WriteLine();
+                }
+            }
+
+            // Умножение матрицы на число
+            void Multiply(int[,] matrix, int scalarValue)
+            {
+                for (int i = 0; i < matrix.GetLength(0); i++)
+                {
+                    for (int j = 0; j < matrix.GetLength(1); j++)
+                    {
+                        matrix[i, j] *= scalarValue;
+                    }
+                }
+            }
+
+            // сложение матриц
+            void Addition(int[,] matrix1, int[,] matrix2, int[,] matrix3)
+            {
+                for(int i = 0; i < matrix1.GetLength(0); i++)
+                {
+                    for(int j = 0; j < matrix1.GetLength(1); j++)
+                    {
+                        matrix3[i, j] = matrix1[i, j] + matrix2[i, j];
+                    }
+                }
+            }
+
+            //произведение матриц
+            void Multiplication(int[,] matrix1, int[,] matrix2, int[,] matrix3)
+            {
+                for (int i = 0; i < matrix1.GetLength(0); i++)
+                {
+                    for (int j = 0; j < matrix1.GetLength(1); j++)
+                    {
+                        matrix3[i, j] = matrix1[i, j] * matrix2[i, j];
+                    }
+                }
+            }
+
+            // Заполнение матрицы1 случайными числами
+            fillingMatrix(ref matrix1Task3, random);
+            Console.WriteLine("Изначальная матрица1");
+            printMatrix(matrix1Task3);
+
+            // Заполнение матрицы2 случайными числами
+            fillingMatrix(ref matrix2Task3, random);
+            Console.WriteLine("\nИзначальная матрица2");
+            printMatrix(matrix2Task3);
+
+            Multiply(matrix1Task3, scalar); // Умножение матрицы на число
+            Console.WriteLine($"\nРезультат после умножения матрицы1 на число {scalar}");
+            printMatrix(matrix1Task3);
+
+
+
+            Addition(matrix1Task3, matrix2Task3, sumMatrix); // сложение матриц
+            Console.WriteLine("\nМатрица после сложения двух матриц");
+            printMatrix(sumMatrix);
+
+            Multiplication(matrix1Task3, matrix2Task3, multiplicationMatrix);
+            Console.WriteLine("\nМатрица после умножения двух матриц");
+            printMatrix(multiplicationMatrix);
+
+        }
         static void Main(string[] args)
         {
-            Task2();
+            
+            Task3();
         }
     }
 
