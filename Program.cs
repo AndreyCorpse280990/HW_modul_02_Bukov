@@ -107,7 +107,7 @@ namespace HW_modul_02_Bukov
                 {
                     for (int i = 0; i < B.GetLength(0); i++) // проход по строкам столбца
                     {
-                        sumOfOddColumns += B[i, j]; // добавляем элемент столбца в сумму
+                        sumOfOddColumns += B[i, j]; // добавляю элемент столбца в сумму
                     }
                 }
             }
@@ -174,17 +174,19 @@ namespace HW_modul_02_Bukov
                 }
 
                 // Определение суммы элементов между минимальным и максимальным элементами
-                int startRow = Math.Min(rowMin, rowMax) + 1;
+                int startRow = Math.Min(rowMin, rowMax);
                 int endRow = Math.Max(rowMin, rowMax);
                 int startCol = Math.Min(colMin, colMax);
                 int endCol = Math.Max(colMin, colMax);
+
                 for (int i = startRow; i < endRow; i++)
                 {
-                    for (int j = startCol; j <= endCol; j++)
+                    for (int j = startCol; j < endCol; j++)
                     {
                         sumArrayTask2 += arrayTask2[i, j];
                     }
                 }
+
 
                 Console.WriteLine($"\nСумма элементов массива между минимальным ({minArrayTask2}) и максимальным ({maxArrayTask2}) элементами: {sumArrayTask2}");
             }
@@ -217,7 +219,6 @@ namespace HW_modul_02_Bukov
                     }
                 }
             }
-
 
             // Вывод матрицы
             void printMatrix(int[,] matrix)
